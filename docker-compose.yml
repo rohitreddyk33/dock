@@ -1,0 +1,30 @@
+version: '3'
+services:
+    mongo:
+        image: mongo:5-nanoserver
+        ports:
+        - 27017:27017
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: example
+
+    server:
+        depends_on:
+        - mongo
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        volumes:
+            - /app
+        ports:
+            - "6969:6969"
+
+    client:
+        depends_on:
+        - server
+        - cassandra
+        build:
+            context: ./client
+            dockerfile: Dockerfile
+        ports:
+            - "3000:80"
