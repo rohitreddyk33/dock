@@ -6,10 +6,12 @@ function Register() {
   const[name,setName]=useState('')
   const[email,setEmail]=useState('')
   const[password,setPassword]=useState('')
+
+
+
   async function registerUser(event){
     event.preventDefault()
-    
-  const response=await fetch('http://localhost:6969/api/register',{
+  const response=await fetch('http://localhost:7070/api/register',{
       method:'POST',
       headers:{
         'Content-Type':'application/json',

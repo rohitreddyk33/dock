@@ -7,7 +7,7 @@ const User=new mongoose.Schema(
     quote:{type:String},
     
 },
-{collection:'user-data'}
+{collection:'userdata'}
 )
-const model=mongoose.model('user-data',User)
+const model=mongoose.model('userdata',User)
 module.exports=model

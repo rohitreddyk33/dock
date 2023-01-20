@@ -9,7 +9,7 @@ function Login() {
   const navigate=useNavigate()
   function loginUser(event) {
     event.preventDefault()
-    fetch('http://localhost:6969/api/login', {
+    fetch('http://localhost:7070/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ function Login() {
       }
       
       navigate('/home')
-    })
+    }) 
   }
   return (
     <div>

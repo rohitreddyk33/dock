@@ -1,0 +1,48 @@
+version: '3.9'
+services: 
+  mongo_db:
+    container_name: db_container
+    image: mongo:latest
+    restart: always
+    # volumes:
+    #   - mongo_db:/data/db
+    networks:
+      - mern-network  
+    volumes:
+      - /desktop/mongo-backup:/data/db
+    # environment:
+    #   MONGO_INITDB_ROOT_USERNAME: root
+    #   MONGO_INITDB_ROOT_PASSWORD: example
+  react-app:
+    container_name: react-app
+    image: react-app
+    stdin_open: true
+    ports: 
+      - "3000:3000"
+    
+    depends_on:
+      - node-app   
+    networks:
+      - mern-network    
+
+  node-app:
+    container_name: node-app
+    image: node-app
+
+    # environment:
+    #   # PORT: 7070
+    #   # MONGODB_URI: mongodb://db_container/db
+    #   # DB_NAME: db
+    #   # NAME: Truly   
+    depends_on:
+      - mongo_db      
+    networks:
+      - mern-network    
+
+# volumes:
+#   mongo_db: {}
+
+networks:
+  mern-network:
+    driver: bridge    
+

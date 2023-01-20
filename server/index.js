@@ -6,7 +6,10 @@ const jwt = require('jsonwebtoken');
 app.use(express.json())
 app.use(cors())
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/userdb')
+mongoose.connect("mongodb://db_container/sample")
+// mongoose.connection.on('error', err => {
+//     console.log(err);
+//   });
 
 
 app.post('/api/register', async (req, res) => {
@@ -50,6 +53,6 @@ app.post('/api/login', async (req, res) => {
 })
 
 
-app.listen(6969, () => {
-    console.log("port 6969")
+app.listen(7070, () => {
+    console.log("port 7070")
 })
