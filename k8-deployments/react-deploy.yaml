@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mern-react
+  name: mern-react
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mern-react
+  template:
+    metadata:
+      labels:
+        app: mern-react
+    spec:
+      containers:
+      - image: rohithk33/reactapp
+        name: mern-react
+        ports:
+        - containerPort: 3000

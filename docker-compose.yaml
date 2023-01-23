@@ -4,15 +4,18 @@ services:
     container_name: db_container
     image: mongo:latest
     restart: always
+
     # volumes:
     #   - mongo_db:/data/db
     networks:
       - mern-network  
     volumes:
       - /desktop/mongo-backup:/data/db
-    # environment:
+    environment:
+      PORT: 27017
     #   MONGO_INITDB_ROOT_USERNAME: root
     #   MONGO_INITDB_ROOT_PASSWORD: example
+
   react-app:
     container_name: react-app
     image: react-app
@@ -29,11 +32,11 @@ services:
     container_name: node-app
     image: node-app
 
-    # environment:
-    #   # PORT: 7070
-    #   # MONGODB_URI: mongodb://db_container/db
-    #   # DB_NAME: db
-    #   # NAME: Truly   
+    environment:
+      PORT: 27017
+      MONGODB_URI: mongodb://mongo_db:27017/sample
+      DB_NAME: sample
+      NAME: Truly   
     depends_on:
       - mongo_db      
     networks:

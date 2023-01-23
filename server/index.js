@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 app.use(express.json())
 app.use(cors())
 const mongoose = require('mongoose')
-mongoose.connect("mongodb://db_container/sample")
+mongoose.connect("mongodb+srv://rohit:Krohit03032002.@cluster0.xcoleq7.mongodb.net/test")
 // mongoose.connection.on('error', err => {
 //     console.log(err);
 //   });

@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mern-node  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mern-node
+  template:
+    metadata:
+      labels:
+        app: mern-node
+    spec:
+      containers:
+      - name: mern-node
+        image: rohithk33/nodeapp
+        ports:
+        - containerPort: 7070
