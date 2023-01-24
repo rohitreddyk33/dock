@@ -9,7 +9,7 @@ function Login() {
   const navigate=useNavigate()
   function loginUser(event) {
     event.preventDefault()
-    fetch('http://localhost:7070/api/login', {
+    fetch('http://node-service.default.svc.cluster.local:7070/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
